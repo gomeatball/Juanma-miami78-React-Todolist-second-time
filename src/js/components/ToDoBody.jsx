@@ -1,20 +1,32 @@
 import React from "react";
-import { useState } from "react";
+
 
 const ToDoBody = ({tasks,setTasks}) => {
  
-let renderTasks = () => {
-return "1"
-}
-let deleteTasks = () => {
+let renderTasks = tasks.map((taskItem) => {
+   return (   <li className="todo-task" key={taskItem.id}>
+            <h3>{taskItem.task}</h3>
+            <button onClick={() => deleteTasks(taskItem.id)}>X</button>
+        </li>
+   )
+  });
+// return tasks.map((id,task) => {
+//     <li key="id">{task}</li>
+// })
 
-}
+let deleteTasks = (idToDelete) => {
+ let newArray = tasks.filter((taskitem) => taskitem.id !== idToDelete);
+ setTasks(newArray);
+};
 
     return (
         <>
-        {/* <ul className="todo-tasks">
-            {tasks.length !==0? renderTasks :"No tasks, add a task"}
-        </ul> */}
+        <section className="main">
+           <ul className="todo-tasks">
+               {tasks.length !== 0 ? renderTasks : <li>No tasks, add a task</li>}
+               
+           </ul>
+        </section>
         </>
     )
 }

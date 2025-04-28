@@ -1,9 +1,10 @@
 import React from "react";
-import { useState } from "react";
 
-const ToDoFooter = () => {
+
+const ToDoFooter = ({tasks,setTasks}) => {
     return (
         <>
+     {tasks.length === 1? `${tasks.length} item left `: `${tasks.length} items left`} 
         </>
     )
 }

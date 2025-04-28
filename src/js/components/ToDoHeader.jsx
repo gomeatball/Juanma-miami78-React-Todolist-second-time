@@ -12,7 +12,7 @@ const ToDoHeader = ({tasks,setTasks}) => {
         if (!inputValue || inputValue === "" || inputValue === "undifined") {
             alert("please add a task")
         }
-       else{ handleAddList();}
+       else{ handleAddList()}
     }
 
     const handleAddList = () => {
@@ -29,7 +29,7 @@ const ToDoHeader = ({tasks,setTasks}) => {
 
 
         const appendedArray = [...tasks, newInputValueObj];
-        setInputValue(appendedArray);
+        setTasks(appendedArray);
 
         setCounter(counter+1);
 
@@ -55,8 +55,9 @@ const ToDoHeader = ({tasks,setTasks}) => {
         value={inputValue} 
         onChange={(e) => setInputValue(e.target.value)}>
         </input>
-       <button onClick={validateInput}>Add</button>
-        <ToDoBody/>
+       <button className="add-task" onClick={validateInput}>Add</button>
+      
+
        </>
     )
     

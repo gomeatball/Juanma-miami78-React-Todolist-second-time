@@ -5,7 +5,7 @@ import ToDoBody from "./ToDoBody";
 import ToDoHeader from "./ToDoHeader";
 import ToDoFooter from "./ToDoFooter";
 import { useState } from "react";
-
+import "../../styles/todoList.css"
 
 
 //create your first component
