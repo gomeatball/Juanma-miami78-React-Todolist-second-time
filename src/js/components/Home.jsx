@@ -11,21 +11,21 @@ import { useState } from "react";
 //create your first component
 const Home = () => {
 
-	const [list, setList] = useState([]);
+	const [tasks, setTasks] = useState([]);
 	return (
   <>
   <h1>Todos</h1>
 	 <div>
-	     <ToDoHeader list={list}
-		 setList={setList}/>
+	     <ToDoHeader tasks={tasks}
+		 setTasks={setTasks}/>
 	 </div>
 	 <div>
-		<ToDoBody list={list}
-		setList={setList}/>
+		<ToDoBody tasks={tasks}
+		setTasks={setTasks}/>
 	 </div>
 	 <div>
-	    <ToDoFooter list={list}
-		setList={setList}/>
+	    <ToDoFooter tasks={tasks}
+		setTasks={setTasks}/>
 	 </div>
 		
   </>

@@ -1,12 +1,20 @@
 import React from "react";
 import { useState } from "react";
 
-const ToDoBody = () => {
+const ToDoBody = ({tasks,setTasks}) => {
+ 
+let renderTasks = () => {
+return "1"
+}
+let deleteTasks = () => {
+
+}
+
     return (
         <>
-        <ul>
-            {list.map((e) => {})}
-        </ul>
+        {/* <ul className="todo-tasks">
+            {tasks.length !==0? renderTasks :"No tasks, add a task"}
+        </ul> */}
         </>
     )
 }
