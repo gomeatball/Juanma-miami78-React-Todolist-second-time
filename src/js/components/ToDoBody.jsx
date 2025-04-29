@@ -5,8 +5,8 @@ const ToDoBody = ({tasks,setTasks}) => {
  
 let renderTasks = tasks.map((taskItem) => {
    return (   <li className="todo-task" key={taskItem.id}>
-            <h3>{taskItem.task}</h3>
-            <button onClick={() => deleteTasks(taskItem.id)}>X</button>
+            <h4>{taskItem.task}</h4>
+            <button onClick={() => deleteTasks(taskItem.id)}>x</button>
         </li>
    )
   });
