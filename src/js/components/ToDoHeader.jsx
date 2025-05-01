@@ -5,7 +5,7 @@ import ToDoBody from "./ToDoBody";
 const ToDoHeader = ({tasks,setTasks}) => {
     const [inputValue, setInputValue] = useState("");
 
-    const [counter, setCounter] = useState(0);
+    // const [counter, setCounter] = useState(0);
     
 
     const validateInput = () => {
@@ -23,21 +23,46 @@ const ToDoHeader = ({tasks,setTasks}) => {
         console.log("creat new inputValue: ", inputValue);
         
         let newInputValueObj = {
-            id: counter,
-            task: inputValue
+        
+            label: inputValue
         }
 
 
         const appendedArray = [...tasks, newInputValueObj];
         setTasks(appendedArray);
 
-        setCounter(counter+1);
+        // setCounter(counter+1);
 
         setInputValue("");
-        console.log("Current list of tasks: ", appendedArray);
+        // console.log("Current list of tasks: ", appendedArray);
+        //step 4. create a new function to fetch a POST
+        postNewTask(inputValue);
         
     }
 
+    const postNewTask = async (newInputValueObj) => {
+        const response = await fetch('https://playground.4geeks.com/todo/todos/YuanMa',{
+           method: "POST",
+           headers: {
+            'Content-Type': 'application/json'
+           },
+           body: JSON.stringify(newInputValueObj)
+        });
+        if (response.ok) {
+            const data = await response.json();
+            // setTasks(data.todos);
+            return data;
+         }
+         else {
+            console.log('Error: ', response.status, response.statusText);
+            return {
+                error: {
+                    status: response.status,
+                    statusText: response.statusText
+         }
+    } 
+  }
+   }
     // const handleKeyDown = (e) =>{
     //     if (e.key === "Enter"){
     //     handleAddList();
@@ -60,7 +85,7 @@ const ToDoHeader = ({tasks,setTasks}) => {
 
        </>
     )
-    
+
 }
 
 export default ToDoHeader;
