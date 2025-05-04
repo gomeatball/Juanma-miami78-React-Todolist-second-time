@@ -8,6 +8,8 @@ const ToDoHeader = ({ tasks, setTasks }) => {
   // const [counter, setCounter] = useState(0);
 
   const validateInput = () => {
+    console.log("my Value is : ", inputValue);
+
     if (!inputValue || inputValue === "" || inputValue === "undefined") {
       alert("please add a task");
     } else {
@@ -20,6 +22,7 @@ const ToDoHeader = ({ tasks, setTasks }) => {
     //     setTasks([...tasks], inputValue);
     //     setInputValue("");
     // }
+
     console.log("creat new inputValue: ", inputValue);
 
     let newInputValueObj = {
@@ -27,14 +30,16 @@ const ToDoHeader = ({ tasks, setTasks }) => {
       is_done: false,
     };
 
-    // const appendedArray = [...tasks, newInputValueObj];
-    // setTasks(appendedArray);
+    const appendedArray = [...tasks, newInputValueObj];
+    setTasks(appendedArray);
 
     // setCounter(counter+1);
 
     setInputValue("");
     // console.log("Current list of tasks: ", appendedArray);
     //step 4. create a new function to fetch a POST
+    // console.log("olalalal: ", newInputValueObj);
+
     postNewTask(newInputValueObj);
   };
 
@@ -49,6 +54,8 @@ const ToDoHeader = ({ tasks, setTasks }) => {
         body: JSON.stringify(newInputValueObj),
       }
     );
+    // console.log("heyheyResponse: ", response);
+
     if (response.ok) {
       const data = await response.json();
       fetchData();
@@ -56,7 +63,7 @@ const ToDoHeader = ({ tasks, setTasks }) => {
       return data;
     } else {
       console.log("Error: ", response.status, response.statusText);
-      fetchData();
+
       return {
         error: {
           status: response.status,
